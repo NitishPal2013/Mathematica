@@ -1,0 +1,516 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17504,        508]
+NotebookOptionsPosition[     15436,        460]
+NotebookOutlinePosition[     15777,        475]
+CellTagsIndexPosition[     15734,        472]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Practical 5 : - LU Decomposition", "Title",
+ CellChangeTimes->{{3.8766479707375355`*^9, 
+  3.876647987917345*^9}},ExpressionUUID->"d42100f4-d7ee-4740-a986-\
+fb9617e93b96"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "Determine", " ", "the", " ", "LU", " ", "Decomposition", " ", "of", " ", 
+     "the", " ", "given", " ", 
+     RowBox[{"matrix", ".", "\[IndentingNewLine]", 
+      RowBox[{"Q1", " ", ":", " ", "A"}]}]}], " ", "=", " ", 
+    RowBox[{"(", GridBox[{
+       {"1", "4", "3"},
+       {"2", "7", "9"},
+       {"5", "8", 
+        RowBox[{"-", "2"}]}
+      }], ")"}]}], ";"}]}]], "Subsubsection",
+ CellChangeTimes->{{3.877353920900052*^9, 3.8773539792599373`*^9}, {
+  3.877354801941208*^9, 
+  3.8773548065128813`*^9}},ExpressionUUID->"b8526c4e-7c79-408f-ad64-\
+e07b69a800b4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"(", GridBox[{
+      {"1", "4", "3"},
+      {"2", "7", "9"},
+      {"5", "8", 
+       RowBox[{"-", "2"}]}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"lu", ",", "p", ",", "n"}], "}"}], " ", "=", " ", 
+   RowBox[{"LUDecomposition", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"LowerTriangularize", "[", 
+     RowBox[{"lu", ",", 
+      RowBox[{"-", "1"}]}], "]"}], " ", "+", 
+    RowBox[{"IdentityMatrix", "[", "3", "]"}]}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", " ", 
+   RowBox[{"UpperTriangularize", "[", "lu", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"l", ".", "u"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Lower Triangular matrix is  = \>\"", ",", 
+   RowBox[{"l", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Upper Triangular matrix is  = \>\"", ",", 
+   RowBox[{"u", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Verification : \>\"", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"a", "\[Equal]", "A"}], ",", "True", ",", "False"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8773539833602095`*^9, 3.877354061809992*^9}, {
+  3.877354095359947*^9, 3.8773543909999547`*^9}, {3.8773544678501973`*^9, 
+  3.877354506369673*^9}, {3.8773545858611045`*^9, 3.877354594901063*^9}},
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"1195e1c9-64ad-4f97-a70e-37298dac01b9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Lower Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0"},
+       {"2", "1", "0"},
+       {"5", "12", "1"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Lower Triangular matrix is  = ", 
+   MatrixForm[{{1, 0, 0}, {2, 1, 0}, {5, 12, 1}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.877354177770075*^9, 3.8773542445999928`*^9, {3.8773542951001253`*^9, 
+   3.8773543540358768`*^9}, 3.877354392479697*^9, {3.877354468689996*^9, 
+   3.877354508497797*^9}, {3.8773545961322083`*^9, 3.877354605161439*^9}},
+ CellLabel->
+  "During evaluation of \
+In[131]:=",ExpressionUUID->"8128bea0-f375-4d18-9c81-77f72d0b0963"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Upper Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "4", "3"},
+       {"0", 
+        RowBox[{"-", "1"}], "3"},
+       {"0", "0", 
+        RowBox[{"-", "53"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Upper Triangular matrix is  = ", 
+   MatrixForm[{{1, 4, 3}, {0, -1, 3}, {0, 0, -53}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.877354177770075*^9, 3.8773542445999928`*^9, {3.8773542951001253`*^9, 
+   3.8773543540358768`*^9}, 3.877354392479697*^9, {3.877354468689996*^9, 
+   3.877354508497797*^9}, {3.8773545961322083`*^9, 3.877354605161439*^9}},
+ CellLabel->
+  "During evaluation of \
+In[131]:=",ExpressionUUID->"b06b1a5b-1cd8-4cc0-b991-9c339231a9e3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Verification : \"\>", "\[InvisibleSpace]", "True"}],
+  SequenceForm["Verification : ", True],
+  Editable->False]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.877354177770075*^9, 3.8773542445999928`*^9, {3.8773542951001253`*^9, 
+   3.8773543540358768`*^9}, 3.877354392479697*^9, {3.877354468689996*^9, 
+   3.877354508497797*^9}, {3.8773545961322083`*^9, 3.877354605161439*^9}, {
+   3.877354813711235*^9, 
+   3.8773548148111277`*^9}},ExpressionUUID->"b91b84ba-2aba-40f2-b0c8-\
+597400d3616e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Q2", ":", "  ", "A"}], " ", "=", " ", 
+   RowBox[{"(", GridBox[{
+      {"1", "2"},
+      {"3", "4"}
+     }], ")"}]}]}]], "Subsection",
+ CellChangeTimes->{{3.8773548160809593`*^9, 3.8773548441910577`*^9}, {
+  3.8773549144010925`*^9, 
+  3.877354925707383*^9}},ExpressionUUID->"6cea7b92-7f7f-403f-b39f-\
+b8723a4b3c2f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"(", GridBox[{
+      {"1", "2"},
+      {"3", "4"}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"lu", ",", "p", ",", "n"}], "}"}], " ", "=", " ", 
+   RowBox[{"LUDecomposition", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"LowerTriangularize", "[", 
+     RowBox[{"lu", ",", 
+      RowBox[{"-", "1"}]}], "]"}], " ", "+", 
+    RowBox[{"IdentityMatrix", "[", "2", "]"}]}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", " ", 
+   RowBox[{"UpperTriangularize", "[", "lu", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"l", ".", "u"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Lower Triangular matrix is  = \>\"", ",", 
+   RowBox[{"l", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Upper Triangular matrix is  = \>\"", ",", 
+   RowBox[{"u", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Verification : \>\"", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"a", "\[Equal]", "A"}], ",", "True", ",", "False"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8773547199309444`*^9, 3.8773547666409044`*^9}, {
+  3.877354854510857*^9, 3.8773548695412664`*^9}, {3.8773549330308266`*^9, 
+  3.877354946490893*^9}},
+ CellLabel->
+  "In[171]:=",ExpressionUUID->"e9f4a63b-7b30-4fb5-ac19-6d249e5455b8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Lower Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0"},
+       {"3", "1"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Lower Triangular matrix is  = ", 
+   MatrixForm[{{1, 0}, {3, 1}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8773547388912797`*^9, 3.8773547708609877`*^9, 3.877354872541252*^9, {
+   3.8773549409309616`*^9, 3.8773549470310125`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[171]:=",ExpressionUUID->"ebd74b3a-0715-46cb-9980-07ec8ebefcbc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Upper Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "2"},
+       {"0", 
+        RowBox[{"-", "2"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Upper Triangular matrix is  = ", 
+   MatrixForm[{{1, 2}, {0, -2}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8773547388912797`*^9, 3.8773547708609877`*^9, 3.877354872541252*^9, {
+   3.8773549409309616`*^9, 3.8773549470310125`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[171]:=",ExpressionUUID->"03cac15d-6fc4-46cd-a600-b43195b84f16"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Verification : \"\>", "\[InvisibleSpace]", "True"}],
+  SequenceForm["Verification : ", True],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8773547388912797`*^9, 3.8773547708609877`*^9, 3.877354872541252*^9, {
+   3.8773549409309616`*^9, 3.8773549470310125`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[171]:=",ExpressionUUID->"69155953-02ce-49ce-aa65-95d915a80eae"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Q3", ":", " ", "A"}], " ", "=", " ", 
+  RowBox[{"(", GridBox[{
+     {"2", "7", "5"},
+     {"6", "20", "10"},
+     {"4", "3", "0"}
+    }], ")"}]}]], "Subsubsection",
+ CellChangeTimes->{{3.8773549512609696`*^9, 
+  3.877354974520864*^9}},ExpressionUUID->"65e0e2aa-0886-4264-8191-\
+4dad4cd2b949"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"(", GridBox[{
+      {"2", "7", "5"},
+      {"6", "20", "10"},
+      {"4", "3", "0"}
+     }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"lu", ",", "p", ",", "n"}], "}"}], " ", "=", " ", 
+   RowBox[{"LUDecomposition", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"LowerTriangularize", "[", 
+     RowBox[{"lu", ",", 
+      RowBox[{"-", "1"}]}], "]"}], " ", "+", 
+    RowBox[{"IdentityMatrix", "[", "3", "]"}]}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", " ", 
+   RowBox[{"UpperTriangularize", "[", "lu", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"l", ".", "u"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Lower Triangular matrix is  = \>\"", ",", 
+   RowBox[{"l", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Upper Triangular matrix is  = \>\"", ",", 
+   RowBox[{"u", " ", "//", "MatrixForm"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Verification : \>\"", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"a", "\[Equal]", "A"}], ",", "True", ",", "False"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.877354982361144*^9, 3.8773549983208117`*^9}},
+ CellLabel->
+  "In[187]:=",ExpressionUUID->"f52b66b7-4169-4aaf-9283-414b5eb49f4a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Lower Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0"},
+       {"3", "1", "0"},
+       {"2", "11", "1"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Lower Triangular matrix is  = ", 
+   MatrixForm[{{1, 0, 0}, {3, 1, 0}, {2, 11, 1}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.877354993941183*^9, 3.8773549985911713`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[187]:=",ExpressionUUID->"237912c7-bb1c-4d49-8364-f43bda56824b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Upper Triangular matrix is  = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"2", "7", "5"},
+       {"0", 
+        RowBox[{"-", "1"}], 
+        RowBox[{"-", "5"}]},
+       {"0", "0", "45"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Upper Triangular matrix is  = ", 
+   MatrixForm[{{2, 7, 5}, {0, -1, -5}, {0, 0, 45}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.877354993941183*^9, 3.8773549986012278`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[187]:=",ExpressionUUID->"5e7c7b7d-98a9-4216-a4e8-df4c6c804e1b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Verification : \"\>", "\[InvisibleSpace]", "True"}],
+  SequenceForm["Verification : ", True],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.877354993941183*^9, 3.8773549986012278`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[187]:=",ExpressionUUID->"42a98204-5a8f-48be-9b34-36ec268cfc92"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{678, 668},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 177, 3, 96, "Title",ExpressionUUID->"d42100f4-d7ee-4740-a986-fb9617e93b96"],
+Cell[CellGroupData[{
+Cell[782, 29, 636, 18, 122, "Subsubsection",ExpressionUUID->"b8526c4e-7c79-408f-ad64-e07b69a800b4"],
+Cell[CellGroupData[{
+Cell[1443, 51, 1697, 45, 198, "Input",ExpressionUUID->"1195e1c9-64ad-4f97-a70e-37298dac01b9"],
+Cell[CellGroupData[{
+Cell[3165, 100, 1220, 30, 50, "Print",ExpressionUUID->"8128bea0-f375-4d18-9c81-77f72d0b0963"],
+Cell[4388, 132, 1270, 32, 50, "Print",ExpressionUUID->"b06b1a5b-1cd8-4cc0-b991-9c339231a9e3"],
+Cell[5661, 166, 578, 13, 22, "Print",ExpressionUUID->"b91b84ba-2aba-40f2-b0c8-597400d3616e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6300, 186, 385, 11, 105, "Subsection",ExpressionUUID->"6cea7b92-7f7f-403f-b39f-b8723a4b3c2f"],
+Cell[CellGroupData[{
+Cell[6710, 201, 1595, 43, 179, "Input",ExpressionUUID->"e9f4a63b-7b30-4fb5-ac19-6d249e5455b8"],
+Cell[CellGroupData[{
+Cell[8330, 248, 1071, 28, 35, "Print",ExpressionUUID->"ebd74b3a-0715-46cb-9980-07ec8ebefcbc"],
+Cell[9404, 278, 1096, 29, 35, "Print",ExpressionUUID->"03cac15d-6fc4-46cd-a600-b43195b84f16"],
+Cell[10503, 309, 425, 10, 22, "Print",ExpressionUUID->"69155953-02ce-49ce-aa65-95d915a80eae"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10977, 325, 327, 10, 89, "Subsubsection",ExpressionUUID->"65e0e2aa-0886-4264-8191-4dad4cd2b949"],
+Cell[CellGroupData[{
+Cell[11329, 339, 1526, 42, 198, "Input",ExpressionUUID->"f52b66b7-4169-4aaf-9283-414b5eb49f4a"],
+Cell[CellGroupData[{
+Cell[12880, 385, 1045, 27, 50, "Print",ExpressionUUID->"237912c7-bb1c-4d49-8364-f43bda56824b"],
+Cell[13928, 414, 1095, 29, 50, "Print",ExpressionUUID->"5e7c7b7d-98a9-4216-a4e8-df4c6c804e1b"],
+Cell[15026, 445, 346, 8, 22, "Print",ExpressionUUID->"42a98204-5a8f-48be-9b34-36ec268cfc92"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
